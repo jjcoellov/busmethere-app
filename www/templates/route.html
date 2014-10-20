@@ -1,0 +1,38 @@
+<ion-view title="Route {{ data.route.code }} - {{ data.route.name }}">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-divider" ng-if="data.route.inboundStops.length > 0">
+                Inbound
+            </ion-item>
+            <ion-item ng-repeat="stop in data.route.inboundStops" href="#/app/busStop/{{stop.code}}" >
+                <div class="flag__image">
+                    <img class="bus" src="img/bus.png"/>
+                </div>
+                <div class="flag__body">
+                    <p>{{stop.name}} ({{ stop.code }})</p>
+                </div>
+            </ion-item>
+            <ion-item class="item-divider" ng-if="data.route.outboundStops.length > 0">
+                Outbound
+            </ion-item>
+            <ion-item ng-repeat="stop in data.route.outboundStops" href="#/app/busStop/{{stop.code}}" >
+                <div class="flag__image">
+                    <img class="bus" src="img/bus.png"/>
+                </div>
+                <div class="flag__body">
+                    <p>{{stop.name}} ({{ stop.code }})</p>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/app/search">
+            <i class="icon ion-search"></i>
+            Search
+        </a>
+        <a class="tab-item" href="#/app/map">
+            <i class="icon ion-map"></i>
+            Map
+        </a>
+    </div>
+</ion-view>

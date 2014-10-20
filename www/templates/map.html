@@ -1,0 +1,33 @@
+<ion-view title="Map">
+    <ion-content has-header="true" scroll="false">
+        <ion-nav-buttons side="left">
+            <button class="button icon ion-android-locate" ng-click="locateMe()"></button>
+        </ion-nav-buttons>        <!-- map directive-->
+        <ion-nav-buttons side="right">
+            <ion-toggle class="bar bar-dark map-toggle" ng-model="showBuses.checked" ng-change="showBusesChange()" toggle-class="toggle-energized">Show Buses</ion-toggle>
+        </ion-nav-buttons>        <!-- map directive-->
+        <map    class="map-whole-screen"
+                center="centerCtrl"
+                zoom="zoomCtrl"
+                bus-stops="busStopsCtrl"
+                buses="busesCtrl"
+                current-location="currentLocationCtrl"
+                data-tap-disabled="true">
+        </map>
+        <div class="tabs tabs-icon-top">
+            <a class="tab-item" href="#/app/search">
+                <i class="icon ion-search"></i>
+                Search
+            </a>
+            <a class="tab-item selected">
+                <i class="icon ion-map"></i>
+                Map
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
+
+

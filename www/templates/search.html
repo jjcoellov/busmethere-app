@@ -1,0 +1,51 @@
+<ion-view title="Search">
+    <ion-header-bar class="bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-change="search()" ng-model="data.search">
+        </label>
+        <button class="button button-clear" ng-click="clear()">
+            Cancel
+        </button>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+
+            <ion-item collection-repeat="location in data.locations" class="list-item"
+                      collection-item-width="'100%'"
+                      collection-item-height="60"
+                      href="#/app/{{ location.type }}/{{ location.code }}" >
+
+                <div ng-if=" location.type == 'route' " class="flag" >
+                    <div class="flag__image">
+                        <div class="h-box h-box--m color-route-{{ location.code }}">
+                            <span>{{ location.code }}</span>
+                        </div>
+                    </div>
+                    <div class="flag__body">
+                        <p>{{location.name}}</p>
+                    </div>
+                </div>
+                <div ng-if=" location.type == 'busStop' " class="flag" >
+                    <div class="flag__image">
+                        <img class="bus" src="img/bus.png"/>
+                    </div>
+                    <div class="flag__body">
+                        <p>{{location.name}} ({{ location.code }})</p>
+                    </div>
+                </div>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+        <div class="tabs tabs-icon-top">
+            <a class="tab-item selected">
+                <i class="icon ion-search"></i>
+                Search
+            </a>
+            <a class="tab-item" href="#/app/map">
+                <i class="icon ion-map"></i>
+                Map
+            </a>
+        </div>
+</ion-view>

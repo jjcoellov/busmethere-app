@@ -1,0 +1,55 @@
+<ion-view title="Messages in {{ data.busStop.name }} ({{ data.busStop.code }}) ">
+    <ion-content class="has-header">
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()"
+                >
+        </ion-refresher>
+        <div class="list card" ng-repeat="message in data.messages">
+
+            <div class="item item-avatar">
+                <img src="img/icon-person.png">
+                <h2>{{ message.author }}</h2>
+                <p>{{ message.dateCreated }}</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="{{ message.url }}">
+                <p>
+                    {{ message.text }}
+                </p>
+                <p>
+                    <a class="subdued">{{ message.likes }} Like</a>
+                    <a class="subdued">{{ message.comments.length }} Comments</a>
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" ng-click="like(message.id)">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item">
+                    <i class="icon ion-chatbox"></i>
+                    Comment
+                </a>
+            </div>
+
+        </div>
+        <div class="h-vertical">A</div>
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/app/search">
+            <i class="icon ion-search"></i>
+            Search
+        </a>
+        <a class="tab-item" href="#/app/map/{{ data.busStop.code }}">
+            <i class="icon ion-map"></i>
+            Map
+        </a>
+        <a class="tab-item selected">
+            <i class="icon ion-chatboxes"></i>
+            Messages
+        </a>
+    </div>
+</ion-view>

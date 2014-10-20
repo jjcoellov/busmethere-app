@@ -1,0 +1,43 @@
+<ion-view title="Bus Stop - {{ data.busStop.name }} ({{ data.busStop.code }}) ">
+    <ion-content class="has-header">
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="doRefresh()"
+                >
+        </ion-refresher>
+        <ion-list>
+            <ion-item class="item-divider">
+                Upcoming Buses
+            </ion-item>
+            <ion-item ng-repeat="route in data.busStop.routes">
+                <div class="flag" >
+                    <div class="flag__image">
+                        <a ng-href="#/app/route/{{ route.code }}">
+                            <div class="h-box h-box--l color-route-{{ route.code }}">
+                                <span>{{ route.code }}</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flag__body">
+                        <p>{{ route.name }}</p>
+                        <p><b>To: </b>{{ route.destination }}</p>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/app/search">
+            <i class="icon ion-search"></i>
+            Search
+        </a>
+        <a class="tab-item" href="#/app/map/{{ data.busStop.code }}">
+            <i class="icon ion-map"></i>
+            Map
+        </a>
+        <a class="tab-item" href="#/app/messages/{{ data.busStop.code }}">
+            <i class="icon ion-chatboxes"></i>
+            Messages
+        </a>
+    </div>
+</ion-view>
